@@ -9,11 +9,11 @@ public class Student {
     String phoneNumber;
     Date joinDate;
     String index;
+    String status;
 
     StudyProgramme studyProgramme;
     static int studentIdx = 0;
     ArrayList<Grade> grades = new ArrayList();
-    String status = "Candidate";
     int currentSemester = 1;
 
     public Student(String firstName, String lastName, String email, String address, String phoneNumber, Date joinDate) {
@@ -24,10 +24,23 @@ public class Student {
         this.phoneNumber = phoneNumber;
         this.joinDate = joinDate;
         this.index = generateIndex();
+        this.status = getStatusBySemester();
     }
 
     private String generateIndex() {
         return "s" + studentIdx++;
+    }
+
+    private String getStatusBySemester() {
+        if (currentSemester == 1) {
+            return "Candidate";
+        } else if (currentSemester > 1) {
+            return "Student";
+        } else if (currentSemester >= 7) {
+            return "Graduate";
+        } else {
+            return "";
+        }
     }
 
     public void enrollStudent(StudyProgramme programme) {

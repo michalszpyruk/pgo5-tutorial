@@ -11,7 +11,7 @@ public class Students {
         for(int i = 0; i < students.size(); i++) {
             Student currentStudent = students.get(i);
 
-            boolean canBePromoted = currentStudent.getNumberOfITNs() < currentStudent.studyProgramme.allowedITN;
+            boolean canBePromoted = currentStudent.getNumberOfITNs() < currentStudent.studyProgramme.allowedITN && currentStudent.status != "Graduate";
 
             if (canBePromoted) {
                 currentStudent.currentSemester++;
